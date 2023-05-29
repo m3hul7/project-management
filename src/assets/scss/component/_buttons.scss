@@ -1,0 +1,19 @@
+// Button styles goes here
+
+
+.btn {
+    &:disabled {
+        cursor: not-allowed !important;
+    }
+    &:focus {
+        // needed to override box-shadow on focus.
+        box-shadow: none !important;
+    }
+}
+
+.btn-task, .btn-timeline, .btn-arrow {
+    border: $border-width-half solid transparent;
+    &:hover {
+        border: $border-width-half solid $danger;
+    }
+}

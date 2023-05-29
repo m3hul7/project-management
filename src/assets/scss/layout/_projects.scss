@@ -1,0 +1,33 @@
+// projects stylesheet
+.aside-wrapper {
+    width: $project-list-width;
+    flex: 0 0 $project-list-width;
+    border-right: $border-width solid $border-color;
+}
+
+// project view stylesheet
+.project-view {
+    &-tab {
+        border-bottom: $border-width solid $border-color;
+        .tab-menu {
+            padding-bottom: 11px;
+        }
+        .active .tab-menu {
+            border-bottom: $border-width solid $danger;
+        }
+        .tab-menu:hover {
+            border-bottom: $border-width solid $danger;
+        }
+    }
+}
+
+// task management stylesheet
+.tasks {
+    &-refinement {
+        border-bottom: $border-width solid $border-color;
+    }
+    &-menu {
+        cursor: pointer;
+        border-radius: .75rem;
+    }
+}
