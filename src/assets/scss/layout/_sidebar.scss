@@ -1,0 +1,24 @@
+// sidebar
+#sidebar {
+    flex: 0 0 $sidebar-width;
+}
+.nav-brand-logo, .profile-logo {
+    color: $danger;
+    font-size: $sidebar-logo-size;
+}
+
+.nav {
+    .active {
+        color: $danger;
+    }
+    &-link:hover {
+        color: $danger;
+    }
+    &-link {
+        color: $light;
+        .icon {
+            font-size: $sidebar-icon-size;
+        }
+    }
+}
+
