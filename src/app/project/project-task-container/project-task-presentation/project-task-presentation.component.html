@@ -1,0 +1,184 @@
+<div class="tasks d-flex flex-column h-100 overflow-hidden position-relative">
+    <div class="task-floating-btn me-5 mb-5 position-absolute border border-dark bg-dark rounded-circle d-flex justify-content-center align-items-center end-0 bottom-0" (click)="display()">
+        <span class="icon-plus fs-2"></span>
+    </div>
+    <!-- tasks-menu -->
+    <div class="task-refinement row py-3 px-4 mx-0">
+        <div class="col-6 p-0">
+            <nav>
+                <ul class="nav align-items-center">
+                    <li [ngClass]="{'active-shadow': this.viewFlag == 'Board'}" class="nav-item" (click)="changeView('Board')">
+                        <a class="nav-link task-nav py-3">
+                            <span class="icon-bar-chart-2"></span>
+                            <span class="ps-2">Board</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" (click)="changeView('Table')">
+                        <a [ngClass]="{'active-shadow': this.viewFlag == 'Table'}" class="nav-link task-nav py-3">
+                            <span class="icon-tablet"></span>
+                            <span class="ps-2">Table</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-6 p-0">
+            <nav>
+                <ul class="nav align-items-center justify-content-end ">
+                    <li class="nav-item">
+                        <a class="nav-link task-nav py-3">
+                            <span class="icon-filter"></span>
+                            <span class="ps-2">Filter</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link task-nav py-3">
+                            <span class="icon-sort"></span>
+                            <span class="ps-2">Sort by</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="d-flex flex-grow-1 overflow-x-auto h-100" cdkDropListGroup>
+        <ng-container *ngIf="this.viewFlag == 'Table'">
+            <div class="d-flex flex-grow-1 p-4 overflow-auto">
+                <table class="table table-bordered text-white">
+                <thead>
+
+                    <tr>
+                        <th class="col">Image</th>
+                        <th class="col">Title</th>
+                        <th class="col">Type</th>
+                        <th class="col">Tag</th>
+                        <th class="col">Description</th>
+                        <th class="col">More</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <ng-container *ngFor="let item of taskList">
+                        <tr>
+                            <td><img class="" style="height: 50px;" src="./../../../assets/images/rickie-tom-schunemann-J6L2GSuOi34-unsplash.jpg" alt="Card image cap"></td>
+                            <td>{{item.taskTitle}}</td>
+                            <td>{{item.taskFormType}}</td>
+                            <td>
+                                <!-- {{item.taskTag | json}} -->
+                                <div class="text-center" *ngFor="let tag of item.taskTag">
+                                    <span class="px-1 pb-1 me-1" [ngClass]="{'new-task': item.taskFormType=='new', 'on-progress-task': item.taskFormType=='onprogress','on-review-task': item.taskFormType=='onreview', 'completed-task': item.taskFormType=='completed'}">{{tag.item_text}}</span>
+                                    <!-- {{tag.item_text | json}} -->
+                                </div>
+                            </td>
+                            <td>{{item.taskDescription}}</td>
+                            <td>
+                                <div class="text-center">
+                                    <div class="d-flex align-items-center justify-content-center mt-2">
+                                        <div class="border rounded-circle p-3 d-flex justify-content-center align-items-center">
+                                            <span class="icon-more-horizontal "></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+                </table>
+    
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="this.viewFlag == 'Board'">
+
+        <!-- New Task column -->
+        <div class="col-3 card-column overflow-hidden d-flex flex-column">
+            <div class="card-title p-3 d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <span class="icon-dot-circle-o"></span>
+                    <h5 class="m-0 ps-3">New Task ({{newTask.length}})</h5>
+                </div>
+                <div (click)="display()">
+                    <span class="icon-plus fs-2 text-primary"></span>
+                </div>
+            </div>
+            <div class="py-4 overflow-hidden">
+                <div class="px-4 overflow-auto h-100">
+                    <div class="list" cdkDropList [cdkDropListData]="newTask" (cdkDropListDropped)="drop($event)">
+                        <div class="box" *ngFor="let item of newTask" cdkDrag>
+                            <app-task-card [item]="item"></app-task-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- On Progress column -->
+        <div class="col-3 card-column overflow-hidden d-flex flex-column">
+            <div class="card-title p-3 d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <span class="icon-dot-circle-o"></span>
+                    <h5 class="m-0 ps-3">On Progress ({{onprogress.length}})</h5>
+                </div>
+                <div (click)="display()">
+                    <span class="icon-plus fs-2 text-warning"></span>
+                </div>
+            </div>
+            <div class="py-4 overflow-hidden">
+                <div class="px-4 overflow-auto h-100">
+                    <div class="list" cdkDropList [cdkDropListData]="onprogress" (cdkDropListDropped)="drop($event)">
+                        <div class="box" *ngFor="let item of onprogress">
+                            <app-task-card [item]="item" cdkDrag></app-task-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- On Review column -->
+        <div class="col-3 card-column overflow-hidden d-flex flex-column">
+            <div class="card-title p-3 d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <span class="icon-dot-circle-o"></span>
+                    <h5 class="m-0 ps-3 bg-secondary">On Review({{onreview.length}})</h5>
+                </div>
+                <div (click)="display()">
+                    <span class="icon-plus fs-2 text-success"></span>
+                </div>
+            </div>
+            <div class="py-4 overflow-hidden">
+                <div class="px-4 overflow-y-auto h-100">
+                    <div class="list" cdkDropList [cdkDropListData]="onreview" (cdkDropListDropped)="drop($event)">
+                        <div class="box" *ngFor="let item of onreview" cdkDrag>
+                            <app-task-card [item]="item"></app-task-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Complete  column -->
+        <div class="col-3 card-column overflow-hidden d-flex flex-column">
+            <div class="card-title p-3 d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <span class="icon-dot-circle-o"></span>
+                    <h5 class="m-0 ps-3 bg-secondary">Completed ({{complete.length}})</h5>
+                </div>
+                <div (click)="display()">
+                    <span class="icon-plus fs-2 text-info"></span>
+                </div>
+            </div>
+            <div class="py-4 overflow-hidden">
+                <div class="px-4 overflow-y-auto h-100">
+                    <div class="list" cdkDropList [cdkDropListData]="complete" (cdkDropListDropped)="drop($event)">
+                        <div class="box" *ngFor="let item of complete">
+                            <app-task-card [item]="item" cdkDrag></app-task-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </ng-container>
+
+    </div>
+
+</div>

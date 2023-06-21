@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 // Overlay-prebuilt 
-// @import '@angular/cdk/overlay-prebuilt.css';
+@import '@angular/cdk/overlay-prebuilt.css';
+
 
 // Base
 @import './assets/scss/base/index';
@@ -11,6 +12,8 @@
 
 // Bootstrap Components
 @import './assets/scss/vendor/bootstrap-components';
+// ng-select style
+@import "~@ng-select/ng-select/themes/default.theme.css";
 
 // Specific Components
 @import './assets/scss/component/index';

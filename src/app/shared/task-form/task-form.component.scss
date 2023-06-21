@@ -1,0 +1,49 @@
+.bg-image {
+    /* The image used */
+    background-image: url("./../../../assets/images/rickie-tom-schunemann-J6L2GSuOi34-unsplash.jpg");
+
+    // /* Add the blur effect */
+    // backdrop-filter: blur(16px);
+    // -webkit-filter: blur(8px);
+
+    /* Full height */
+    // height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.blur {
+    // background: rgba(255, 255, 255, 0.15); // Make sure this color has an opacity of less than 1
+    background: rgba(37, 34, 53, 0.20); // Make sure this color has an opacity of less than 1
+    backdrop-filter: blur(8px); // This be the blur
+    height: 100%;
+    // width: 100%;
+}
+
+.close-btn {
+    z-index: 10;
+    rotate: 45deg;
+    // transform: rotate(45deg);
+    // transition: rotate 2s ease-in-out;
+    animation: in 1s;
+    &:hover {
+        // transition: all 2s ease-in-out;
+        // rotate: 1.75turn;
+        animation: out 1s;
+        // transform: rotate(270deg);
+        color: #f43885;
+    }
+}
+
+@keyframes in {
+    from   { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes out {
+    0%   { -webkit-transform: rotate(360deg); }
+    100% { -webkit-transform: rotate(0deg); }
+}

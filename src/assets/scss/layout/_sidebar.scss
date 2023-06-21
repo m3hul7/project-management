@@ -14,9 +14,15 @@
     &-link:hover {
         color: $danger;
     }
+    .task-nav:hover {
+        box-shadow: 0.3rem 0.3rem 0.6rem $dark, -0.2rem -0.2rem 0.5rem $dark;
+    }
+    .active-shadow {
+        box-shadow: 0.3rem 0.3rem 0.6rem $dark, -0.2rem -0.2rem 0.5rem $dark;
+    }
     &-link {
         color: $light;
-        .icon {
+        .aside-icon {
             font-size: $sidebar-icon-size;
         }
     }

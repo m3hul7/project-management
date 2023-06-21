@@ -10,8 +10,16 @@ const routes: Routes = [
   },
   {
     path: 'master',
-    component: MasterComponent
-  }
+    component: MasterComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'project',
+        pathMatch:'full'
+      },
+      { path: 'project', loadChildren: () => import('./project/project.module').then(m => m.ProjectModule) }
+    ]
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,21 @@
+<div class="card mb-3 bg-secondary" cdkDrag>
+    <div class="card-body">
+        <img class="card-img-top" src="./../../../assets/images/rickie-tom-schunemann-J6L2GSuOi34-unsplash.jpg" alt="Card image cap">
+        <div class="d-flex justify-content-between">
+            <div class="col-10 d-flex align-items-center flex-wrap">
+                <ng-container *ngFor="let tag of item.taskTag">
+                    <p [ngClass]="{'new-task': item.taskFormType=='new', 'on-progress-task': item.taskFormType=='onprogress','on-review-task': item.taskFormType=='onreview', 'completed-task': item.taskFormType=='completed'}" class="card-small-text px-1 pb-1 me-1 mt-2 mb-0">{{tag.item_text}}</p>
+                </ng-container>
+            </div>
+            <div class="col-2 text-center">
+                <div class="d-flex align-items-center justify-content-center mt-2">
+                    <div class="border rounded-circle p-3 d-flex justify-content-center align-items-center">
+                        <span class="icon-more-horizontal position-absolute"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h6>{{item.taskTitle}}</h6>
+        <p class="card-text card-small-text">{{item.taskDescription}}</p>
+    </div>
+</div>

@@ -1,0 +1,214 @@
+<form class="bg-secondary bg-image position-relative" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <div class="close-btn border border-primary rounded-circle p-1 d-flex justify-content-center align-items-center position-absolute top-0 end-0 mt-3 me-3" (click)="closeForm()">
+        <span class="close-icon icon-plus fs-2"></span>
+    </div>
+    <div class="row m-0 g-4 p-4 blur">
+        <div class="col-12">
+            <label for="taskImage" class="form-label"><h5>Task Image</h5></label>
+            <input type="file" class="form-control border-0 rounded-0" id="taskImage" placeholder="1234 Main St"
+                formControlName="taskImage">
+        </div>
+        <div class="col-12 position-relative">
+            <label for="taskName" class="form-label"><h5>Task Name</h5></label>
+            <input type="text" class="form-control border-0 rounded-0" id="taskName" formControlName="taskName">
+            <div class="invalid-tooltip d-block"
+                *ngIf="!taskForm.controls['taskName']?.valid && (taskForm.controls['taskName']?.dirty ||taskForm.controls['taskName']?.touched)">
+                <div *ngIf="taskForm.controls['taskName'].errors?.['required']">
+                    Field is required
+                </div>
+            </div>
+            <div class="valid-tooltip d-block" *ngIf="taskForm.controls['taskName']?.valid">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-3 position-relative">
+            <label for="inputAddress" class="form-label"><h5>Assigned to</h5></label>
+            <ng-select [items]="cities" bindLabel="name" bindValue="id" [multiple]="true" groupBy="selectedAllGroup"
+                [selectableGroup]="true" placeholder="Select cities" (change)="onMaterialGroupChange($event)"
+                formControlName="taskAssignees">
+                <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                    <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected"
+                        [ngModelOptions]="{standalone: true}" /> Select All
+                </ng-template>
+            </ng-select>
+            <div class="invalid-tooltip d-block"
+                *ngIf="!taskForm.controls['taskAssignees']?.valid && (taskForm.controls['taskAssignees']?.dirty ||taskForm.controls['taskAssignees']?.touched)">
+                <div *ngIf="taskForm.controls['taskAssignees'].errors?.['required']">
+                    Field is required
+                </div>
+            </div>
+            <div class="valid-tooltip d-block" *ngIf="taskForm.controls['taskAssignees']?.valid">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-3 position-relative">
+            <label for="inputAddress" class="form-label"><h5>Tags</h5></label>
+            <ng-select [items]="cities" bindLabel="name" bindValue="id" [multiple]="true" groupBy="selectedAllGroup"
+                [selectableGroup]="true" placeholder="Select cities" (change)="onMaterialGroupChange($event)"
+                formControlName="taskTags">
+                <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                    <input class=" border-0 rounded-0" id="item-{{index}}" type="checkbox" [ngModel]="item$.selected"
+                        [ngModelOptions]="{standalone: true}" /> Select All
+                </ng-template>
+            </ng-select>
+            <div class="invalid-tooltip d-block"
+                *ngIf="!taskForm.controls['taskTags']?.valid && (taskForm.controls['taskTags']?.dirty ||taskForm.controls['taskTags']?.touched)">
+                <div *ngIf="taskForm.controls['taskTags'].errors?.['required']">
+                    Field is required
+                </div>
+            </div>
+            <div class="valid-tooltip d-block" *ngIf="taskForm.controls['taskTags']?.valid">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-3 position-relative">
+            <label for="taskState" class="form-label"><h5>State</h5></label>
+            <select class="form-select border-0 rounded-0" id="taskState" aria-label="Default select example" formControlName="taskState">
+                <option selected>Open this select menu</option>
+                <option value="1">New</option>
+                <option value="2">Active</option>
+                <option value="3">Closed</option>
+                <option value="4">Removed</option>
+            </select>
+            <div class="invalid-tooltip d-block"
+                *ngIf="!taskForm.controls['taskState']?.valid && (taskForm.controls['taskState']?.dirty ||taskForm.controls['taskState']?.touched)">
+                <div *ngIf="taskForm.controls['taskState'].errors?.['required']">
+                    Field is required
+                </div>
+            </div>
+            <div class="valid-tooltip d-block" *ngIf="taskForm.controls['taskState']?.valid">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-3 position-relative">
+            <label for="taskArea" class="form-label"><h5>Area</h5></label>
+            <select class="form-select border-0 rounded-0" id="taskArea" aria-label="Default select example" formControlName="taskArea">
+                <option selected>Open this select menu</option>
+                <option value="1">Frontend</option>
+                <option value="2">Backend</option>
+            </select>
+            <div class="invalid-tooltip d-block"
+                *ngIf="!taskForm.controls['taskArea']?.valid && (taskForm.controls['taskArea']?.dirty ||taskForm.controls['taskArea']?.touched)">
+                <div *ngIf="taskForm.controls['taskArea'].errors?.['required']">
+                    Field is required
+                </div>
+            </div>
+            <div class="valid-tooltip d-block" *ngIf="taskForm.controls['taskArea']?.valid">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-6 position-relative">
+            <label for="taskDescription" class="form-label"><h5>Description</h5></label>
+            <editor apiKey="6093uc6fg0l80c61dmvmypjvkwsj8rx5n3ths5nddfo9ta8n" cloudChannel="5" [disabled]="false"
+                id="taskDescription" [init]="{ height: '300' }" initialValue="" [inline]="false" plugins="" tagName="div"
+                toolbar="" formControlName="taskDescription">
+            </editor>
+            <div class="invalid-tooltip d-block"
+                *ngIf="!taskForm.controls['taskDescription']?.valid && (taskForm.controls['taskDescription']?.dirty ||taskForm.controls['taskDescription']?.touched)">
+                <div *ngIf="taskForm.controls['taskDescription'].errors?.['required']">
+                    Field is required
+                </div>
+            </div>
+            <div class="valid-tooltip d-block" *ngIf="taskForm.controls['taskDescription']?.valid">
+                Looks good!
+            </div>
+            <!-- <editor apiKey="6093uc6fg0l80c61dmvmypjvkwsj8rx5n3ths5nddfo9ta8n" [inline]="true" [init]="{ plugins: 'lists link image table code help wordcount' }"></editor> -->
+        </div>
+        <div class="col-md-3" formGroupName="taskPlanning">
+            <div class="row g-4">
+                <h5>Planning</h5>
+                <div class="position-relative">
+                    <label for="taskPriority" class="form-label">Priority</label>
+                    <select class="form-select border-0 rounded-0" id="taskPriority" aria-label="Default select example"
+                        formControlName="taskPriority">
+                        <option selected>Open this select menu</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    <div class="invalid-tooltip d-block"
+                        *ngIf="!taskForm.get('taskPlanning.taskPriority')?.valid && (taskForm.get('taskPlanning.taskPriority')?.dirty || taskForm.get('taskPlanning.taskPriority')?.touched)">
+                        <div *ngIf="taskForm.get('taskPlanning.taskPriority')?.errors?.['required']">
+                            Field is required
+                        </div>
+                    </div>
+                    <div class="valid-tooltip d-block" *ngIf="taskForm.get('taskPlanning.taskPriority')?.valid">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="position-relative">
+                    <label for="taskActivity" class="form-label">Activity</label>
+                    <select class="form-select border-0 rounded-0" id="taskActivity" aria-label="Default select example"
+                        formControlName="taskActivity">
+                        <option selected>Open this select menu</option>
+                        <option value="1">Deployment</option>
+                        <option value="2">Design</option>
+                        <option value="3">Development</option>
+                        <option value="4">Documentation</option>
+                        <option value="5">Requirements</option>
+                        <option value="6">Testing</option>
+                    </select>
+                    <div class="invalid-tooltip d-block"
+                        *ngIf="!taskForm.get('taskPlanning.taskActivity')?.valid && (taskForm.get('taskPlanning.taskActivity')?.dirty ||taskForm.get('taskPlanning.taskActivity')?.touched)">
+                        <div *ngIf="taskForm.get('taskPlanning.taskActivity')?.errors?.['required']">
+                            Field is required
+                        </div>
+                    </div>
+                    <div class="valid-tooltip d-block" *ngIf="taskForm.get('taskPlanning.taskActivity')?.valid">
+                        Looks good!
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" formGroupName="taskEffort">
+            <div class="row g-4">
+                <h5>Effort (Hours)</h5>
+                <div class="position-relative">
+                    <label for="taskOriginalEstimate" class="form-label">Original Estimate</label>
+                    <input type="text" class="form-control border-0 rounded-0" id="taskOriginalEstimate"
+                        formControlName="taskOriginalEstimate">
+                    <div class="invalid-tooltip d-block"
+                        *ngIf="!taskForm.get('taskEffort.taskOriginalEstimate')?.valid && (taskForm.get('taskEffort.taskOriginalEstimate')?.dirty ||taskForm.get('taskEffort.taskOriginalEstimate')?.touched)">
+                        <div *ngIf="taskForm.get('taskEffort.taskOriginalEstimate')?.errors?.['required']">
+                            Field is required
+                        </div>
+                    </div>
+                    <div class="valid-tooltip d-block" *ngIf="taskForm.get('taskEffort.taskOriginalEstimate')?.valid">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="position-relative">
+                    <label for="taskRemaining" class="form-label">Remaining</label>
+                    <input type="text" class="form-control border-0 rounded-0" id="taskRemaining" formControlName="taskRemaining">
+                    <div class="invalid-tooltip d-block"
+                        *ngIf="!taskForm.get('taskEffort.taskRemaining')?.valid && (taskForm.get('taskEffort.taskRemaining')?.dirty ||taskForm.get('taskEffort.taskRemaining')?.touched)">
+                        <div *ngIf="taskForm.get('taskEffort.taskRemaining')?.errors?.['required']">
+                            Field is required
+                        </div>
+                    </div>
+                    <div class="valid-tooltip d-block" *ngIf="taskForm.get('taskEffort.taskRemaining')?.valid">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="position-relative">
+                    <label for="taskCompleted" class="form-label">Completed</label>
+                    <input type="text" class="form-control border-0 rounded-0" id="taskCompleted" formControlName="taskCompleted">
+                    <div class="invalid-tooltip d-block"
+                        *ngIf="!taskForm.get('taskEffort.taskCompleted')?.valid && (taskForm.get('taskEffort.taskCompleted')?.dirty ||taskForm.get('taskEffort.taskCompleted')?.touched)">
+                        <div *ngIf="taskForm.get('taskEffort.taskCompleted')?.errors?.['required']">
+                            Field is required
+                        </div>
+                    </div>
+                    <div class="valid-tooltip d-block" *ngIf="taskForm.get('taskEffort.taskCompleted')?.valid">
+                        Looks good!
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 d-flex justify-content-evenly">
+            <button class="btn btn-success" type="submit">Submit form</button>
+            <button class="btn btn-danger" type="reset">Reset form</button>
+        </div>
+    </div>
+</form>

@@ -1,3 +1,5 @@
+$font-size-base-sm: .025rem;
+
 // sidebar
 $sidebar-width: 100px;
 $sidebar-logo-size: 3rem;
@@ -15,8 +17,8 @@ $project-search-height: 50px;
 $timeline-search-width: 400px;
 $timeline-search-height: 40px;
 // border 
-$border-color: $secondary;
-$border-width: .25rem;
+$border-color: $dark;
+$border-width: .20rem;
 $border-width-half: .125rem;
 $border-color-hover:  $light;
 
@@ -26,3 +28,8 @@ $card-radius: .75rem;
 
 $transition-time: 0.4s;
 $font-size-base-sm: 0.875rem;
+
+$aside-width: 300px;
+$aside-bg: $dark
+
+

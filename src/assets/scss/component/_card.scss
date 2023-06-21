@@ -1,6 +1,8 @@
 // card styles goes here
 
 .card-column {
+    background: rgb(37, 34, 53);
+    background: radial-gradient(circle, rgba(37, 34, 53, 1) 0%, rgba(37, 34, 53, 1) 100%);
     border-top: $border-width solid $border-color;
     border-right: $border-width solid $border-color;
     flex: 1 0 $card-width;
@@ -12,10 +14,11 @@
     .card {
         border-radius: $card-radius;
         // review
-        // &-small-text{
-        //     font-size: $font-size-base-sm;
-        // }
+        &-small-text{
+            font-size: $font-size-base-sm;
+        }
     }
+
 
     // review
     // .card:hover {
