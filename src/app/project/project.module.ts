@@ -13,6 +13,9 @@ import { ProjectTaskPresentationComponent } from './project-task-container/proje
 import { SharedModule } from '../shared/shared.module';
 import { ProjectOverviewContainerComponent } from './project-overview-container/project-overview-container.component';
 import { ProjectOverviewPresentationComponent } from './project-overview-container/project-overview-presentation/project-overview-presentation.component';
+import { ProjectTimelineContainerComponent } from './project-timeline-container/project-timeline-container.component';
+import { ProjectTimelinePresentationComponent } from './project-timeline-container/project-timeline-presentation/project-timeline-presentation.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
   declarations: [
@@ -25,11 +28,14 @@ import { ProjectOverviewPresentationComponent } from './project-overview-contain
     ProjectTaskPresentationComponent,
     ProjectOverviewContainerComponent,
     ProjectOverviewPresentationComponent,
+    ProjectTimelineContainerComponent,
+    ProjectTimelinePresentationComponent,
   ],
   imports: [
     CommonModule,
     ProjectRoutingModule,
     DragDropModule,
+    FullCalendarModule,
     SharedModule,
   ]
 })

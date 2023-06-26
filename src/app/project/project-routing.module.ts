@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProjectComponent } from './project.component';
 import { ProjectTaskContainerComponent } from './project-task-container/project-task-container.component';
 import { ProjectOverviewContainerComponent } from './project-overview-container/project-overview-container.component';
+import { ProjectTimelineContainerComponent } from './project-timeline-container/project-timeline-container.component';
 
 const routes: Routes = [
   { 
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'task',
         component: ProjectTaskContainerComponent
+      },
+      {
+        path: 'timeline',
+        component: ProjectTimelineContainerComponent
       }
     ] 
   }

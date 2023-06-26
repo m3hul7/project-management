@@ -30,6 +30,10 @@ $transition-time: 0.4s;
 $font-size-base-sm: 0.875rem;
 
 $aside-width: 300px;
-$aside-bg: $dark
+$aside-bg: $dark;
 
+// calendar card pop over
+:root {
 
+    --fc-neutral-bg-color:  #f43885 !important;
+}
