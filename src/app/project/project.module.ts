@@ -16,6 +16,9 @@ import { ProjectOverviewPresentationComponent } from './project-overview-contain
 import { ProjectTimelineContainerComponent } from './project-timeline-container/project-timeline-container.component';
 import { ProjectTimelinePresentationComponent } from './project-timeline-container/project-timeline-presentation/project-timeline-presentation.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { ProjectFileContainerComponent } from './project-file-container/project-file-container.component';
+import { ProjectFilePresentationComponent } from './project-file-container/project-file-presentation/project-file-presentation.component';
+import { HorizontalScrollDirective } from './directives/horizontal-scroll.directive';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     ProjectOverviewPresentationComponent,
     ProjectTimelineContainerComponent,
     ProjectTimelinePresentationComponent,
+    ProjectFileContainerComponent,
+    ProjectFilePresentationComponent,
+    HorizontalScrollDirective,
   ],
   imports: [
     CommonModule,

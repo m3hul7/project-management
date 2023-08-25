@@ -4,6 +4,7 @@ import { ProjectComponent } from './project.component';
 import { ProjectTaskContainerComponent } from './project-task-container/project-task-container.component';
 import { ProjectOverviewContainerComponent } from './project-overview-container/project-overview-container.component';
 import { ProjectTimelineContainerComponent } from './project-timeline-container/project-timeline-container.component';
+import { ProjectFileContainerComponent } from './project-file-container/project-file-container.component';
 
 const routes: Routes = [
   { 
@@ -26,6 +27,10 @@ const routes: Routes = [
       {
         path: 'timeline',
         component: ProjectTimelineContainerComponent
+      },
+      {
+        path: 'file',
+        component: ProjectFileContainerComponent
       }
     ] 
   }

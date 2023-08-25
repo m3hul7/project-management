@@ -25,3 +25,36 @@
         // border: $border-width-half solid $danger;
     }
 }
+
+.task-floating-btn {
+    &:hover {
+        transition: all .4s ease-in-out;
+        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    }
+}
+
+.close-btn {
+    z-index: 10;
+    rotate: 45deg;
+    // transform: rotate(45deg);
+    // transition: rotate 2s ease-in-out;
+    color: #f43885;
+    // animation: in .4s;
+    &:hover {
+        // transition: all 2s ease-in-out;
+        // rotate: 1.75turn;
+        animation: in 1s;
+        // transform: rotate(270deg);
+        color: #f43885;
+    }
+}
+
+@keyframes in {
+    from   { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes out {
+    0%   { -webkit-transform: rotate(360deg); }
+    100% { -webkit-transform: rotate(0deg); }
+}
